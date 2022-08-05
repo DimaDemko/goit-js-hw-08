@@ -23,10 +23,9 @@ function onInputForm(event) {
 form.addEventListener('submit', event => {
   event.preventDefault();
   const { email, message } = form.elements;
-  if (email.value === '' || message.value === '') {
-    alert('все поля нужно заполнить');
+  if (email.value !== '' && message.value !== '') {
+    console.log({ email: email.value, message: message.value });
+    localStorage.removeItem('feedback-form-state');
+    form.reset();
   }
-  console.log({ email: email.value, message: message.value });
-  form.reset();
-  localStorage.removeItem('feedback-form-state');
 });
